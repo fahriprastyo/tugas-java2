@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript tugas2</title>
+    <script>
+
+
+
+        // Penjumlahan
+        function jumlah(){
+            let a = Number(document.getElementById("bil1").value);
+            let b = Number(document.getElementById("bil2").value);
+            let c = a + b;
+            document.getElementById("bil3").value=c;
+        }
+
+        // Lingkaran
+        function hitung(){
+            const PHI = 3.14
+            let jari = document.getElementById("jari").value;
+            console.log("jari-jari :" + jari);
+            let luas = PHI * jari * jari;
+            let kel = 2.0 * PHI * jari;
+            console.log("luas :" + luas)
+            console.log("kel :" + kel)
+            let area_luas = document.getElementById("hasil");
+            area_luas.innerHTML = "Luasnya adalah " + luas + "\nKeliling : " + kel;
+        }
+
+
+
+        // Parkir !
+          function hitung() {
+            let cek_in = document.getElementById("masuk").value;
+            let cek_out = document.getElementById("keluar").value;
+            let selisih  = cek_out - cek_in;
+            let biaya =0;
+            const TARIF_AWAL = 3000;
+            const TARIF_PERJAM = 1000;
+            if(selisih <= 2){
+                biaya = TARIF_AWAL;
+            }else{
+                let tambahan_jam = selisih - 2;
+                biaya = TARIF_AWAL + (TARIF_PERJAM * tambahan_jam)
+            }
+            let area_biaya = document.getElementById("biaya");
+            area_biaya.innerHTML = "Rp." + biaya
+        }
+
+        // Kurs Mata Uang
+        function konversi() {
+	        var input = (document.form.nilai.value);
+	        var hitunguang = (document.form.user_input.value);
+	        var hasil = 0;
+    	    if(hitunguang == "USD"){
+	    	    hasil = input*13500;
+	        }
+	        else if(hitunguang == "SGD"){
+		        hasil = input*9900;
+	        }
+	        else if(hitunguang == "YEN"){
+		    hasil = input*126;
+            }
+            else if(hitunguang == "EURO"){
+                hasil = input*15900;
+            }
+            else if(hitunguang == "RIYAL"){
+                hasil = input*2000;
+            }
+            else if(hitunguang == "RINGGIT"){
+                hasil = input*3300;
+            }
+            else{
+            hasil = 0;
+            }
+        
+            document.form.hasil.value= eval(hasil); }
+
+
+    </script>
+</head>
+
+<body>
+
+    <h2>MENGHITUNG KELILING DAN LUAS LINGKARAN</h2>
+    <br>
+     Jari-jari : 
+    <input type="number" size="25" id="jari">
+    <br>
+    <button onclick="hitung()">CEK</button>
+    <br>Hasil = <span id="hasil"></span>
+    <br> <hr>
+
+    <h2>Penjumlahan</h2>
+    <form id="Penjumlahan">
+        <input type="text" id="bil1" value="0" onchange="jumlah()">
+        <b>+</b><input type="text" id="bil2" value="0" onchange="jumlah()">
+        <b>=</b><input type="text" id="bil3" value="0">
+        <br><hr>
+
+    <h2> Kurs Mata Uang</h2>
+    <form name="form">
+        <label for="nilai">Masukkan nilai Rupiah</label>
+        <input type="number" name="nilai">
+        <select name="user_input" id="user_input">
+            <option id="pilih_1" value="USD">USD</option>
+            <option id="pilih_2" value="SGD">SGD</option>
+            <option id="pilih_3" value="RINGGIT">RINGGIT</option>
+            <option id="pilih_4" value="YEN">YEN</option>
+            <option id="pilih_5" value="EURO">EURO</option>
+            <option id="pilih_6" value="RIYAL">RIYAL</option>
+        </select>
+        <button onclick="konversi(); return false;">konversi</button> 
+        <input type="text" name="hasil" disabled>
+    </form>
+    <hr><br>
+
+    <h2>Biaya Parkir</h2>
+    Masuk : <input type="number" value="" id="masuk">
+    <br>
+    Keluar : <input type="number" value="" id="keluar">
+    <br>
+    <button onclick="hitung()" >CEK</button> : <span id="biaya"></span> <script></script>
+  
+</body>
+
+</html>
